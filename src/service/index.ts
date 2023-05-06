@@ -21,7 +21,7 @@ const request = new Request({
       if (token && config.headers) {
         config.headers.Authorization = `Bearer ${token}`
       }
-      console.log('创建的实例请求成功的拦截')
+      window.console.log('创建的实例请求成功的拦截')
       return config
     },
     requestInterceptorCatch: (err) => {

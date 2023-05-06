@@ -3,7 +3,7 @@
  * @Date: 2023-03-19 17:57:52
  * @LastEditors: xujie 1607526161@qq.com
  * @FilePath: \yuanshan_00\src\main.ts
- * @Description: 
+ * @Description:
  */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -11,7 +11,6 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import registerApp from './global/index'
-
 
 const app = createApp(App)
 const pinia = createPinia()

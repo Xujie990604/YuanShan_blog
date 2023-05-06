@@ -3,7 +3,7 @@
  * @Date: 2023-03-19 21:39:54
  * @LastEditors: xujie 1607526161@qq.com
  * @FilePath: \yuanshan_00\src\views\home\cpts\code-standards-list.vue
- * @Description: 
+ * @Description:
 -->
 <template>
   <div class="code-standards-list">

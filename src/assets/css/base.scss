@@ -5,12 +5,14 @@
  * @FilePath: \vue-ts\src\assets\CSS\base.scss
  * @Description: 自定义的格式化 CSS 文件
  */
-body{
+body {
   padding: 0;
   margin: 0;
 }
 
-html, body, #app {
+html,
+body,
+#app {
   height: 100%;
   width: 100%;
 }
