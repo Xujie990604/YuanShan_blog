@@ -1,0 +1,7 @@
+# 默认情况下，prettier 会忽略版本控制系统目录（".git"、".svn"和".hg"）和node_modules
+
+# 忽略格式化文件 (根据项目需要自行添加)
+dist
+
+# 忽略所有的 html 文件
+*.html

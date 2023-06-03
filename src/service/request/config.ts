@@ -1,20 +1,6 @@
-/*
- * @Author: xujie 1607526161@qq.com
- * @Date: 2022-12-28 19:19:05
- * @LastEditors: xujie 1607526161@qq.com
- * @FilePath: \yuanshan_00\src\service\request\config.ts
- * @Description:
- */
-
-// 请求的基础路径
-let BASE_URL = ''
-// 超时时间
-const TIME_OUT = 1000
-
-if (process.env.NODE_ENV === 'development') {
-  BASE_URL = '/api'
-} else if (process.env.NODE_ENV === 'production') {
-  BASE_URL = '/aaa/bbb'
-}
+// 网络请求的基础路径
+const BASE_URL = import.meta.env.VITE_BASE_URL
+// 网络请求超时
+const TIME_OUT = 3000
 
 export { BASE_URL, TIME_OUT }

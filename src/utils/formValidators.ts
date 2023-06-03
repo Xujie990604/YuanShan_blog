@@ -19,7 +19,7 @@ const formValidators: formValidatorsFunction = function (params) {
     validatorList.push({
       required: true,
       message: '这是必填项',
-      trigger
+      trigger,
     })
   }
 
@@ -34,7 +34,7 @@ const formValidators: formValidatorsFunction = function (params) {
     }
     validatorList.push({
       validator,
-      trigger
+      trigger,
     })
   }
 
