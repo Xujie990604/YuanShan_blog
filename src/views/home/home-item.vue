@@ -4,14 +4,9 @@
 
 <script lang="ts" setup>
   import { useMouse } from './hooks/hook-mouse'
-  import { onMounted } from 'vue'
 
   // 鼠标在当前页的坐标
   const { x, y } = useMouse()
-
-  onMounted(() => {
-    console.log('dddddd')
-  })
 </script>
 
 <style scoped lang="scss"></style>

@@ -10,6 +10,17 @@ import postcssPresetEnv from 'postcss-preset-env'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api': {
+        // 将前端的本地服务器请求代理到 nest 服务上
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        // 路径重写
+        rewrite: path => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   plugins: [
     vue(),
     eslintPlugin({

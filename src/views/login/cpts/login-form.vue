@@ -16,6 +16,8 @@
   import FormSubmit from './form-submit.vue'
   import FromAccountType from './form-account-type.vue'
   import { useRouter } from 'vue-router'
+  import { userLogin } from '@/service/login/index'
+  import { ElMessage } from 'element-plus'
 
   const router = useRouter()
 
@@ -23,15 +25,24 @@
   const formAccountRef = ref(null)
 
   // 登录事件
-  const login = () => {
-    formAccountRef.value.accountFromRef.validate((valid: any) => {
-      // 表单数据验证失败
-      if (!valid) {
-        return
-      }
-      // 表单数据验证成功
-      router.push('home')
-    })
+  const login = async () => {
+    const validateResult = await formAccountRef.value.validateFormData()
+    // 前端验证通过，则调用登录接口
+    if (validateResult) {
+      const data = formAccountRef.value.formData
+      // 登录接口调用
+      userLogin(data).then(result => {
+        // 是否存在该用户
+        const isHasUser = result.data.length > 0
+        // 登录成功 ? 跳转路由 : 消息提示
+        isHasUser
+          ? router.push('/home')
+          : ElMessage({
+              message: '用户名或者密码错误',
+              type: 'error',
+            })
+      })
+    }
   }
 </script>
 

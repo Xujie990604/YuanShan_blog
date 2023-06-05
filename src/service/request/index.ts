@@ -12,24 +12,20 @@ class Request {
     // 请求拦截器
     this.instance.interceptors.request.use(
       res => {
-        console.log('请求成功拦截器')
         return res
       },
       err => {
-        console.log('请求失败拦截器')
         return err
       }
     )
     // 响应拦截器
     this.instance.interceptors.response.use(
       res => {
-        console.log('响应成功拦截器')
         const data = res.data
         // TODO: 根据响应结果中的错误码进行弹窗提示
         return data
       },
       err => {
-        console.log('响应失败拦截器')
         // TODO: 根据 HTTP 结果码进行适配
         // 404 页面 500页面
         return err
@@ -60,18 +56,18 @@ class Request {
   }
 
   // post 类型的请求
-  post(config: AxiosRequestConfig) {
-    return this.request({ ...config, method: 'POST' })
+  post<T>(config: AxiosRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'POST' })
   }
 
   // delete 类型的请求
-  delete(config: AxiosRequestConfig) {
-    return this.request({ ...config, method: 'DELETE' })
+  delete<T>(config: AxiosRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'DELETE' })
   }
 
   // patch 类型的请求
-  patch(config: AxiosRequestConfig) {
-    return this.request({ ...config, method: 'PATCH' })
+  patch<T>(config: AxiosRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'PATCH' })
   }
 }
 

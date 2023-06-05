@@ -11,7 +11,7 @@
       label="用户名:"
       prop="username">
       <el-input
-        v-model="formData.username"
+        v-model="formData.name"
         placeholder="请输入用户名"
         type="text" />
     </el-form-item>
@@ -34,25 +34,40 @@
   import { reactive, ref } from 'vue'
   import validator from '@/utils/formValidators'
   import type { FormInstance, FormRules } from 'element-plus'
+  import { ElMessage } from 'element-plus'
 
   // 表单 Ref
   const accountFromRef = ref<FormInstance>()
 
   // 表单数据
   const formData = reactive({
-    username: '',
+    name: '',
     password: '',
   })
 
   // 表单验证规则
   const rules = reactive<FormRules>({
-    username: validator({ required: true }),
+    name: validator({ required: true }),
     password: validator({ required: true, lengthRange: true }),
   })
 
+  // 验证表单的数据是否符合校验
+  async function validateFormData(): Promise<boolean | void> {
+    let validateResult = false
+    validateResult = await accountFromRef.value.validate()
+    console.log(validateResult)
+    if (!validateResult) {
+      ElMessage({
+        message: '数据格式错误',
+        type: 'error',
+      })
+    }
+    return validateResult
+  }
+
   // 当前组件暴露的属性
   defineExpose({
-    accountFromRef,
+    validateFormData,
     formData,
   })
 </script>
