@@ -52,16 +52,18 @@
   })
 
   // 验证表单的数据是否符合校验
-  async function validateFormData(): Promise<boolean | void> {
+  async function validateFormData(): Promise<boolean> {
     let validateResult = false
-    validateResult = await accountFromRef.value.validate()
-    console.log(validateResult)
-    if (!validateResult) {
-      ElMessage({
-        message: '数据格式错误',
-        type: 'error',
-      })
-    }
+    // validate 方法是异步的，所以必须加上 await 来保证 return 的数据是处理过的
+    await accountFromRef.value.validate(isValid => {
+      validateResult = isValid
+      if (!validateResult) {
+        ElMessage({
+          message: '数据格式错误',
+          type: 'error',
+        })
+      }
+    })
     return validateResult
   }
 
