@@ -5,7 +5,7 @@ const router = createRouter({
   routes: [
     {
       path: '',
-      redirect: '/home',
+      redirect: '/back-home',
     },
     {
       path: '/login',
@@ -16,6 +16,11 @@ const router = createRouter({
       path: '/home',
       name: 'Home',
       component: () => import('../views/home/home-item.vue'),
+    },
+    {
+      path: '/back-home',
+      name: 'BackHome',
+      component: () => import('../views/back-manage/back-home.vue'),
     },
   ],
 })

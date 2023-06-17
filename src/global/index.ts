@@ -3,6 +3,7 @@ import ElementPlus from './register-element'
 import globalCpts from './register-global-components'
 import globalData from './register-global-data'
 import routerErrorHandler from './router-error-handler'
+import ElementPlusIconsVue from './register-element-icon'
 
 // 引入全局 CSS 文件
 import '../assets/css/common.scss'
@@ -27,4 +28,8 @@ export default function (app: App) {
   routerErrorHandler(app)
   // 5. 注册全局的变量(不推荐在 Vue3 的选项式中使用，仅是作为演示用)
   app.config.globalProperties.$info2 = '在 Vue 实例上的全局属性'
+  // 6. 注册全局的 Element 图标
+  Object.keys(ElementPlusIconsVue).forEach(key => {
+    app.component(key, ElementPlusIconsVue[key])
+  })
 }
