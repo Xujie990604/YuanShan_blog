@@ -20,14 +20,22 @@
 
   // 3. 依赖注入的方式来实现跨层级传值，事件
   import homeInjectSon from './cpts/home-inject-son.vue'
-  import { ref, provide } from 'vue'
-  const injectCount = ref(0)
-  function updateInjectCount() {
-    injectCount.value++
+  import { injectInfoKey } from './type'
+  import type { IInjectInfo, IUpdateInjectInfo } from './type'
+  import { provide, reactive } from 'vue'
+
+  const injectInfo: IInjectInfo = reactive({
+    name: 'xujie',
+    height: 170,
+  })
+
+  const updateInjectInfo: IUpdateInjectInfo = function (value = 1) {
+    injectInfo.height += value
   }
-  provide('injectCount', {
-    injectCount,
-    updateInjectCount,
+
+  provide(injectInfoKey, {
+    injectInfo,
+    updateInjectInfo,
   })
 </script>
 
