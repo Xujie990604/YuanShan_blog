@@ -1,7 +1,13 @@
 <template>
   <!-- 分别使用三种方式来体会 普通传值，透传，依赖注入带来的好处 -->
   <div class="my-home">Mouse Position is at : {{ x }} {{ y }}</div>
+
   <!-- 1. props emit 的方式来实现跨层级传值，事件 -->
+  <homePropsSon
+    :userInfo="userInfo"
+    :count="count"
+    @update-user-info="userInfo.age++"
+    @update-count="count++"></homePropsSon>
 
   <!-- 2. 透传的方式来实现跨层级传值，事件 -->
   <homeAttrsSon
@@ -20,6 +26,14 @@
   import { useMouse } from './hooks/hook-mouse'
   // 鼠标在当前页的坐标
   const { x, y } = useMouse()
+  // 1. 使用 props emit 的方式来实现跨层级传值，事件
+  import homePropsSon from './cpts/home-props-son.vue'
+  const userInfo = reactive({
+    name: 'xujie',
+    age: 18,
+  })
+
+  const count = ref(0)
 
   // 2. 使用透传的方式来实现跨层级传值，事件
   import homeAttrsSon from './cpts/home-attrs-son.vue'
