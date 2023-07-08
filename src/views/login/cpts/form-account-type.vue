@@ -53,6 +53,9 @@
 
   // 验证表单的数据是否符合校验
   async function validateFormData(): Promise<boolean> {
+    if (!accountFromRef.value) {
+      return false
+    }
     let validateResult = false
     // validate 方法是异步的，所以必须加上 await 来保证 return 的数据是处理过的
     await accountFromRef.value.validate(isValid => {

@@ -22,10 +22,13 @@
   const router = useRouter()
 
   // 获取账号登录组件的 ref
-  const formAccountRef = ref(null)
+  const formAccountRef = ref<InstanceType<typeof FromAccountType> | null>(null)
 
   // 登录事件
   const login = async () => {
+    if (!formAccountRef.value) {
+      return false
+    }
     const validateResult = await formAccountRef.value.validateFormData()
     // 前端验证通过，则调用登录接口
     if (validateResult) {
