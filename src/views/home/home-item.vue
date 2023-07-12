@@ -17,6 +17,9 @@
 
   <!-- 3. 依赖注入的方式来实现跨层级传值，事件 -->
   <homeInjectSon></homeInjectSon>
+
+  <!--  跳转到后台管理页面-->
+  <el-button @click="turnToBackHome">跳转到后台管理页面</el-button>
 </template>
 
 <script lang="ts" setup>
@@ -65,6 +68,14 @@
     injectInfo,
     updateInjectInfo,
   })
+
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
+
+  //  跳转到后台管理页面
+  function turnToBackHome() {
+    router.push('back-home')
+  }
 </script>
 
 <style scoped lang="scss"></style>

@@ -1,78 +1,92 @@
 <template>
   <div class="back-manage">
     <el-container>
+      <!-- 侧边栏 -->
       <el-aside width="400px">
         <h1 class="title">后台管理网站</h1>
         <el-menu
-          @open="handleOpen"
-          @close="handleClose">
-          <!-- 一级页签 - 用户管理 -->
-          <el-sub-menu index="user">
-            <template #title>
-              <el-icon><User /></el-icon>
-              <span>用户管理</span>
+          @select="handleSelect"
+          :default-active="activeIndex">
+          <template v-if="frontUserPermissionList.length > 0">
+            <!-- 一级页签 - 自动生成 -->
+            <template
+              v-for="(levelOneItem, levelOneItemIndex) in frontUserPermissionList"
+              :key="levelOneItemIndex">
+              <el-sub-menu :index="levelOneItem.levelOneIndex">
+                <template #title>
+                  <el-icon>
+                    <component :is="levelOneItem.icon"></component>
+                  </el-icon>
+                  <span>{{ levelOneItem.name }}</span>
+                </template>
+                <!-- 二级页签 -->
+                <template
+                  v-for="(levelTwoItem, levelTwoItemIndex) in levelOneItem.levelOneChildren"
+                  :key="levelTwoItemIndex">
+                  <!-- 二级页签被包含在某个分组中 -->
+                  <template v-if="isIncludeInGroup(levelTwoItem)">
+                    <el-menu-item-group :title="levelTwoItem.groupName">
+                      <template
+                        v-for="(itemValue, itemIndex) in levelTwoItem.groupChildren"
+                        :key="itemIndex">
+                        <el-menu-item :index="itemValue.itemIndex">
+                          {{ itemValue.itemName }}
+                        </el-menu-item>
+                      </template>
+                    </el-menu-item-group>
+                  </template>
+                  <!-- 二级页签是独立的并不包含在分组中 -->
+                  <template v-else>
+                    <el-menu-item :index="levelTwoItem.itemIndex">
+                      {{ levelTwoItem.itemName }}</el-menu-item
+                    >
+                  </template>
+                </template>
+              </el-sub-menu>
             </template>
-            <!-- 二级页签 -->
-            <el-menu-item-group title="学生">
-              <el-menu-item index="stu-good">实验班</el-menu-item>
-              <el-menu-item index="stu-simple">普通班</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="老师">
-              <el-menu-item index="teacher-office">编制教师</el-menu-item>
-              <el-menu-item index="teacher-od">外包教师</el-menu-item>
-            </el-menu-item-group>
-          </el-sub-menu>
-          <!-- 一级页签 - 车辆管理 -->
-          <el-sub-menu index="car">
-            <template #title>
-              <el-icon><Van /></el-icon>
-              <span>车辆管理</span>
-            </template>
-            <!-- 二级页签 -->
-            <el-menu-item index="car-big">大卡车</el-menu-item>
-            <el-menu-item index="car-smaller">蔬菜车</el-menu-item>
-            <el-menu-item-group title="外来车辆">
-              <el-menu-item index="outline-person">来访人员</el-menu-item>
-              <el-menu-item index="stu-parents">学生家长</el-menu-item>
-            </el-menu-item-group>
-          </el-sub-menu>
-          <!-- 一级页签 - 工资管理 -->
-          <el-sub-menu index="salary">
-            <template #title>
-              <el-icon><Notebook /></el-icon>
-              <span>工资管理</span>
-            </template>
-            <!-- 二级页签 -->
-            <el-menu-item index="salary-teacher">编制教师</el-menu-item>
-            <el-menu-item index="salary-od">外包教师</el-menu-item>
-            <el-menu-item index="salary-security">安保人员</el-menu-item>
-            <el-menu-item index="salary-kitchen">餐厅人员</el-menu-item>
-          </el-sub-menu>
+          </template>
+          <template v-else>
+            <div class="no-permission-content">
+              <span class="no-permission-tip">暂无可用权限</span>
+            </div>
+          </template>
         </el-menu>
       </el-aside>
-      <el-main style="display: flex; align-items: center; justify-content: center"
-        >后台管理网站的页面</el-main
-      >
+      <!-- 主题内容 -->
+      <el-main style="display: flex; align-items: center; justify-content: center">
+        <!-- 后台管理网站的 router-view -->
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </div>
 </template>
 
 <script lang="ts" setup>
-  // import { reactive, ref } from 'vue'
+  import { ref } from 'vue'
   import { useUserPermissionStore } from '@/stores/userPermission/user-permisssion'
-  import { storeToRefs } from 'pinia'
+  import { getUserPermissionList } from './utils/permissionList'
   const store = useUserPermissionStore()
-  const { userPermissionList, userType } = storeToRefs(store)
 
-  console.log(userPermissionList, userType)
-  // 导航栏的打开事件
-  function handleOpen() {
-    console.log('open')
+  // 权限总表
+  import { allUserPermissionList } from '@/constant/permissionList'
+  // 从 userPermission 中解构需要的数据
+  const { permissionList } = store
+  //  通过工具函数来获取权限列表
+  const frontUserPermissionList = getUserPermissionList(permissionList, allUserPermissionList)
+
+  // 当前被选中的页签
+  const activeIndex = ref('')
+
+  // 判断一个二级页签是否包含在一个组中
+  function isIncludeInGroup(levelTwoValue: any) {
+    return levelTwoValue.groupChildren !== undefined
   }
 
-  // 导航栏的关闭事件
-  function handleClose() {
-    console.log('close')
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
+  // 导航栏的选择事件
+  function handleSelect(key: string, keyPath: string[]) {
+    router.push(`/back-home/${key}`)
   }
 </script>
 
@@ -98,5 +112,18 @@
 
   .el-main {
     background-color: #ddd;
+  }
+
+  .no-permission-content {
+    display: flex;
+    height: 40vh;
+    justify-content: center;
+    align-items: center;
+
+    .no-permission-tip {
+      font-size: 30px;
+      font-weight: 400;
+      color: red;
+    }
   }
 </style>

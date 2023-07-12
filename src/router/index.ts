@@ -21,6 +21,7 @@ const router = createRouter({
       path: '/back-home',
       name: 'BackHome',
       component: () => import('../views/back-manage/back-home.vue'),
+      children: [],
     },
   ],
 })
