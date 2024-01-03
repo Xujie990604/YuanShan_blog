@@ -23,6 +23,11 @@ const router = createRouter({
       component: () => import('../views/back-manage/back-home.vue'),
       children: [],
     },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'NotFound',
+      component: () => import('../views/not-found/not-found.vue')
+    },
   ],
 })
 
