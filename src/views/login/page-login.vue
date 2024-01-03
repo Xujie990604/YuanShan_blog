@@ -12,10 +12,10 @@
 <style scoped lang="scss">
   .page-login {
     display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100%;
     color: red;
     background-image: url('@/assets/images/login-bg.svg');
+    align-items: center;
+    justify-content: center;
   }
 </style>
