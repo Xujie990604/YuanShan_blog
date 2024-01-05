@@ -2,8 +2,8 @@
   <el-button
     class="form-submit"
     @click="loginAction"
-    type="primary"
-    >登录
+    type="primary">
+    登录
   </el-button>
 </template>
 

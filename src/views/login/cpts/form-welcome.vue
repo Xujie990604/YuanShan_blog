@@ -8,7 +8,6 @@
 
 <style scoped lang="scss">
   .form-welcome {
-    position: relative;
     height: 50px;
     margin-bottom: 20px;
     line-height: 50px;

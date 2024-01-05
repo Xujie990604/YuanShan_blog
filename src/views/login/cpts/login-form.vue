@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO: 登录表单找一个B站上的实例改一下，这也太丑了 -->
   <div class="login-form">
     <!-- 欢迎语 -->
     <FormWelcome />
@@ -22,10 +21,14 @@
 
   const router = useRouter()
 
-  // 获取账号登录组件的 ref
+  /**
+   *  获取账号登录组件的 ref
+   */
   const formAccountRef = ref<InstanceType<typeof FromAccountType> | null>(null)
 
-  // 登录事件
+  /**
+   * 执行登录操作
+   */
   const login = async () => {
     if (!formAccountRef.value) {
       return false
@@ -59,15 +62,16 @@
   afterLoginMethod()
   // 调用登录接口之后需要做的事情
   async function afterLoginMethod() {
-    //  1. 获取用户类型和权限列表
     await getUserInfo()
-    //  2.根据获取到的权限列表来渲染路由（后台管理系统）
     await renderPermissionRouter()
   }
-  //  获取用户类型和权限列表
+  /**
+   * 获取用户类型和权限列表
+   */
   async function getUserInfo() {
     // TODO: 用户的类型和权限应该调用接口获取
 
+    // 1. 修改用户类型
     userPermissionList.value.userType = 'admin'
     // 如果修改 userPermissionList.permissionList 时，直接使用替换对象的方式
     // ! 则解构 permissionList 时要使用 storeToRefs 来进行解构，否则 permissionList 不是响应式的(原以为只有基本数据类型解构会丢失响应式)
@@ -75,13 +79,16 @@
     // ! 只有既解构了，又没搭配 storeToRefs 时才会导致异常
     // ! 而且只有在 pinia 中使用才会出现这个问题，脱离 pinia 在普通页面中按照这种写法使用，不会出现问题(但是也值得研究，毕竟是整个替换引用值，为什么会没有问题)(用 computed 和 不用 computed 有差别吗？)
     // TODO：这个结论和我的预想不符合，需要研究。在看一下 pinia 官网的介绍和文章介绍，以及数据更改可否不通过函数直接更改, 没想到 computed 数值也可以更改，并且能影响上层数据，这是值得推荐的使用吗
+    // 2. 修改用户权限
     userPermissionList.value.permissionList = {
       user: ['stu-good', 'stu-simply', 'teacher-office', 'teacher-od'],
       car: ['car-big', 'car-smaller', 'outline-person', 'stu-parents'],
       salary: ['salary-teacher', 'salary-od', 'salary-security', 'salary-kitchen'],
     }
   }
-  //  根据获取到的权限列表来渲染路由（后台管理系统）
+  /**
+   * 根据获取到的权限列表来渲染路由（后台管理系统）
+   */
   async function renderPermissionRouter() {
     const renderRouterList = renderUserPermissionListRouter(permissionList.value)
     // 动态添加路由
@@ -89,6 +96,13 @@
       router.addRoute('BackHome', routerInfo)
     })
   }
+
+  // 测试 Vue3 中的响应式数据
+  const count = ref<number>(0)
+  console.log(count)
+  console.log(count.value)
+  count.value++
+  console.log(count.value)
 </script>
 
 <style scoped lang="scss">
