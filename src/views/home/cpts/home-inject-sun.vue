@@ -19,8 +19,7 @@
   }
 
   // 1. 带有默认值的依赖注入
-  // TODO: Vue 官方演示的是工厂函数的形式，但是这里只能用类的形式(否则类型错误不一致)，需要解决
-  const { injectInfo, updateInjectInfo } = inject(injectInfoKey, new injectInfoClass())
+  const { injectInfo, updateInjectInfo } = inject(injectInfoKey, () => new injectInfoClass(), true)
 
   // 2.不带默认值的导致，因为导出值可能是 undefined，所以需要加上 as IInjectInfoAll
   // 但是这种情况下的类型系统是不安全的

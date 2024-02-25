@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { useAttrs } from 'vue'
+  // import { useAttrs } from 'vue'
   import homeAttrsSun from './home-attrs-sun.vue'
-  const attrs = useAttrs()
+  // const attrs = useAttrs()
 
   // 1. 如果不声明 bar ，则 attrs 中会存在 bar 属性
   // console.log(attrs)
@@ -19,7 +19,7 @@
   const props = defineProps<{
     bar: string
   }>()
-  console.log(attrs)
+  // console.log(attrs)
 
   // 1. 如果不使用 emit 声明事件，则 attrs 中会存在 onSunClick 事件
   // console.log(attrs)

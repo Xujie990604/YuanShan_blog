@@ -64,6 +64,8 @@
     injectInfo.height += value
   }
 
+  console.log(injectInfoKey)
+
   provide(injectInfoKey, {
     injectInfo,
     updateInjectInfo,

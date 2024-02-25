@@ -18,11 +18,11 @@ export interface IInjectInfoAll {
   updateInjectInfo: IUpdateInjectInfo
 }
 
-// 带有注入值类型的 key
+// 带有注入值类型的 key(这个东西本质上就是一个 Symbol)
 export const injectInfoKey = Symbol() as InjectionKey<IInjectInfoAll>
 
 // 生成注入值默认值的类
-export class injectInfoClass implements IInjectInfoAll {
+export class injectInfoClass {
   injectInfo: IInjectInfo = {
     name: '',
     height: 0,
