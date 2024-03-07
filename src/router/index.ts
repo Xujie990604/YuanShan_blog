@@ -24,6 +24,12 @@ const router = createRouter({
       children: [],
     },
     {
+      path: '/vue-i18n',
+      name: 'VueI18n',
+      component: () => import('../views/vue-i18n/vue-i18n.vue'),
+      children: [],
+    },
+    {
       path: '/:pathMatch(.*)',
       name: 'NotFound',
       component: () => import('../views/not-found/not-found.vue'),

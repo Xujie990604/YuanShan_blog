@@ -4,6 +4,7 @@ import globalCpts from './register-global-components'
 import globalData from './register-global-data'
 import routerErrorHandler from './router-error-handler'
 import ElementPlusIconsVue from './register-element-icon'
+import i18n from '../locales/locales'
 
 // 引入全局 CSS 文件
 import '../assets/css/common.scss'
@@ -32,4 +33,6 @@ export default function (app: App) {
   Object.keys(ElementPlusIconsVue).forEach(key => {
     app.component(key, ElementPlusIconsVue[key])
   })
+  // 7. 注册 i8n 实例
+  app.use(i18n)
 }
