@@ -30,6 +30,12 @@ const router = createRouter({
       children: [],
     },
     {
+      path: '/rem-size',
+      name: 'RemSize',
+      component: () => import('../views/rem-size/rem-size.vue'),
+      children: [],
+    },
+    {
       path: '/:pathMatch(.*)',
       name: 'NotFound',
       component: () => import('../views/not-found/not-found.vue'),
