@@ -5,6 +5,7 @@
   "compilerOptions": {
     "types": ["element-plus/global"],
     "moduleResolution": "node",
+    "lib": ["ES2015"],
     "module": "ESNext",
     "composite": true,
     "baseUrl": ".",
