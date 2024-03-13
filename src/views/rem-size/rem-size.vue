@@ -1,23 +1,27 @@
 <template>
-  <div class="a"></div>
-  <div class="b"></div>
+  <h1>屏幕总宽度为 1080 rem</h1>
+  <div class="width-rem-800">800rem</div>
+  <div class="width-rem-540">540rem</div>
 </template>
 
-<script lang="ts" setup>
-  import { reactive, ref } from 'vue'
-</script>
+<script lang="ts" setup></script>
 
 <style scoped lang="scss">
-  .a {
-    width: 1080rem;
-    height: 10px;
-    background-color: red;
+  $list: (800, red), (540, yellow);
+  @mixin line($width, $color) {
+    width: $width;
+    height: 30px;
+    text-align: center;
+    background-color: $color;
+    border-radius: 15px;
+    margin : {
+      bottom: 10px;
+    }
   }
 
-  .b {
-    width: 540rem;
-    height: 10px;
-    margin-top: 10px;
-    background-color: yellow;
+  @each $list-key, $list-value in $list {
+    .width-rem-#{$list-key} {
+      @include line($width: $list-key + rem, $color: $list-value);
+    }
   }
 </style>

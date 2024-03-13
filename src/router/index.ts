@@ -5,7 +5,31 @@ const router = createRouter({
   routes: [
     {
       path: '',
-      redirect: '/back-home',
+      redirect: '/project-main',
+    },
+    {
+      path: '/project-main',
+      name: 'ProjectMain',
+      component: () => import('../views/project-main/project-main.vue'),
+      children: [
+        {
+          path: 'home',
+          name: 'Home',
+          component: () => import('../views/home/home-item.vue'),
+        },
+        {
+          path: 'vue-i18n',
+          name: 'VueI18n',
+          component: () => import('../views/vue-i18n/vue-i18n.vue'),
+          children: [],
+        },
+        {
+          path: 'rem-size',
+          name: 'RemSize',
+          component: () => import('../views/rem-size/rem-size.vue'),
+          children: [],
+        },
+      ],
     },
     {
       path: '/login',
@@ -13,26 +37,9 @@ const router = createRouter({
       component: () => import('../views/login/page-login.vue'),
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: () => import('../views/home/home-item.vue'),
-    },
-    {
       path: '/back-home',
       name: 'BackHome',
       component: () => import('../views/back-manage/back-home.vue'),
-      children: [],
-    },
-    {
-      path: '/vue-i18n',
-      name: 'VueI18n',
-      component: () => import('../views/vue-i18n/vue-i18n.vue'),
-      children: [],
-    },
-    {
-      path: '/rem-size',
-      name: 'RemSize',
-      component: () => import('../views/rem-size/rem-size.vue'),
       children: [],
     },
     {
