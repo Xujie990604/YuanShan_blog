@@ -1,10 +1,12 @@
-// 动态为根元素设置字体大小
+/**
+ * 动态为根元素设置字体大小
+ */
 function init() {
-  // 设计图尺寸
+  /** 设计图尺寸 */
   const designSize = 1080
   // 获取屏幕宽度
   const width = document.documentElement.clientWidth
-  // 设置根元素字体大小。此时为宽的10等分
+  // 设置根元素字体大小(rem)
   document.documentElement.style.fontSize = width / designSize + 'px'
   console.info(`当前宽度为: ${width}px, 当前每rem代表: ${width / designSize}px`)
 }
