@@ -22,7 +22,7 @@
         </el-aside>
         <el-main> <RouterView></RouterView> </el-main>
       </el-container>
-      <el-footer>页面脚步</el-footer>
+      <el-footer>页面底部</el-footer>
     </el-container>
   </div>
 </template>
@@ -48,6 +48,10 @@
         {
           itemName: '多语言',
           itemRouter: 'vue-i18n',
+        },
+        {
+          itemName: 'UnoCSS',
+          itemRouter: 'unocss-test',
         },
       ],
     },

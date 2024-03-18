@@ -7,6 +7,8 @@ import eslintPlugin from 'vite-plugin-eslint'
 import vitePluginStylelint from 'vite-plugin-stylelint'
 // PostCss 插件，用来自动给 CSS 属性添加前缀
 import postcssPresetEnv from 'postcss-preset-env'
+// UnoCSS 插件
+import UnoCSS from 'unocss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,6 +25,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    UnoCSS(),
     eslintPlugin({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue'], // linting 时要包含的单个文件或文件数组。
       lintOnStart: false, // 项目启动时检查所有匹配的文件，太慢了，谨慎打开。

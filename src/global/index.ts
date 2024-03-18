@@ -12,6 +12,8 @@ import '../assets/css/common.scss'
 import 'normalize.css'
 // 设置 rem 大小
 import './set-rem-size'
+// 引入 UnoCss 样式文件
+import 'virtual:uno.css'
 
 // 在 window 中添加一个属性(不推荐这种使用，仅用来测试 Vue template 中的访问范围)
 window.info1 = '在 window 上的全局属性'

@@ -29,6 +29,11 @@ const router = createRouter({
           component: () => import('../views/rem-size/rem-size.vue'),
           children: [],
         },
+        {
+          path: 'unocss-test',
+          name: 'UnoCSSTest',
+          component: () => import('../views/unocss-test/unocss-test.vue'),
+        },
       ],
     },
     {
