@@ -18,6 +18,11 @@ const router = createRouter({
           component: () => import('../views/home/home-item.vue'),
         },
         {
+          path: 'vue-test',
+          name: 'VueTest',
+          component: () => import('../views/vue-test/vue-test.vue'),
+        },
+        {
           path: 'vue-i18n',
           name: 'VueI18n',
           component: () => import('../views/vue-i18n/vue-i18n.vue'),

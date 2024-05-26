@@ -8,7 +8,8 @@
           <el-menu>
             <!-- 二级菜单 -->
             <el-sub-menu
-              v-for="subItem in mainMenuList"
+              v-for="(subItem, index) in mainMenuList"
+              :index="String(index)"
               :key="subItem.title">
               <template #title>{{ subItem.title }}</template>
               <el-menu-item
@@ -39,6 +40,10 @@
         {
           itemName: '父子组件传参',
           itemRouter: 'home',
+        },
+        {
+          itemName: '语法测试',
+          itemRouter: 'vue-test',
         },
       ],
     },
