@@ -3,7 +3,7 @@
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "types": ["element-plus/global"],
+    "types": ["element-plus/global", "node"],
     "moduleResolution": "node",
     "lib": ["ES2015", "DOM"],
     "module": "ESNext",

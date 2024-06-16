@@ -67,6 +67,10 @@
           itemName: '响应式单位',
           itemRouter: 'rem-size',
         },
+        {
+          itemName: '日志打印',
+          itemRouter: 'console-info',
+        },
       ],
     },
   ])

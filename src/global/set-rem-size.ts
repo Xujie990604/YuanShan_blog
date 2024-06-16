@@ -8,7 +8,7 @@ function init() {
   const width = document.documentElement.clientWidth
   // 设置根元素字体大小(rem)
   document.documentElement.style.fontSize = width / designSize + 'px'
-  console.info(`当前宽度为: ${width}px, 当前每rem代表: ${width / designSize}px`)
+  // console.info(`当前宽度为: ${width}px, 当前每rem代表: ${width / designSize}px`)
 }
 
 // 首次加载应用，设置一次

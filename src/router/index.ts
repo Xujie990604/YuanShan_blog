@@ -35,6 +35,12 @@ const router = createRouter({
           children: [],
         },
         {
+          path: 'console-info',
+          name: 'ConsoleInfo',
+          component: () => import('../views/console-info/console-info.vue'),
+          children: [],
+        },
+        {
           path: 'unocss-test',
           name: 'UnoCSSTest',
           component: () => import('../views/unocss-test/unocss-test.vue'),
