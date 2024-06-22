@@ -10,9 +10,8 @@ type consoleType = 'log' | 'info' | 'error' | 'warn'
 const isProduction = process.env.NODE_ENV === 'production'
 
 // 模拟原生APP的日志打印方法
-// TODO: 入参形式尚不明确
 function mockAPPLog(title: string, content: any) {
-  console.log('在原生APP中输出日志', title, content)
+  title && content
 }
 
 // 美化打印
