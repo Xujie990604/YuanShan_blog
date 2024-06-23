@@ -1,0 +1,21 @@
+/**
+* 自定义 Vuetify 组件中使用的 SCSS 变量
+* 只能用来覆盖 Vuetify 中定义过的 !default 变量
+
+// 在非 Vuetify 组件中使用时，需要先导入，再使用
+// 任何 Vuetify 组件变量都可以使用，不一定非是覆盖过的变量
+// 使用示例：
+<style scoped lang="scss">
+  @use '../../assets/css/settings.scss';
+
+  .demo {
+    height: settings.$button-height;  // 覆盖过
+    background-color: settings.$button-background; // 未覆盖过
+  }
+</style>
+*/
+
+
+@forward 'vuetify/settings' with (
+  $button-height: 36px, // 自定义 button 高度
+);

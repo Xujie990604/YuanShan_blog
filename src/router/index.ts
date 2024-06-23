@@ -41,9 +41,9 @@ const router = createRouter({
           children: [],
         },
         {
-          path: 'unocss-test',
-          name: 'UnoCSSTest',
-          component: () => import('../views/unocss-test/unocss-test.vue'),
+          path: 'tailwindcss-test',
+          name: 'Tailwindcss-test',
+          component: () => import('../views/tailwindcss-test/tailwindcss-test.vue'),
         },
       ],
     },

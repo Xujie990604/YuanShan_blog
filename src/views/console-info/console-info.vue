@@ -1,5 +1,6 @@
 <template>
-  <div class="">日志打印</div>
+  <div class="s">日志打印</div>
+  <v-btn text="sss"> </v-btn>
 </template>
 
 <script lang="ts" setup>

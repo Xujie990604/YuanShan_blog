@@ -11,7 +11,7 @@
 4. 全局状态管理: Pinia
 5. 页面路由：Vue Router
 6. 代码检查工具：Eslint  + prettier + stylelint
-7. CSS框架： UnoCss + Scss
+7. CSS框架： Tailwindcss + Scss
 
 ## 二、功能
 

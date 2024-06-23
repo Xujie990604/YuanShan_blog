@@ -55,8 +55,8 @@
           itemRouter: 'vue-i18n',
         },
         {
-          itemName: 'UnoCSS',
-          itemRouter: 'unocss-test',
+          itemName: 'Tailwindcss',
+          itemRouter: 'tailwindcss-test',
         },
       ],
     },
