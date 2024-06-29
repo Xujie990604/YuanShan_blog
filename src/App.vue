@@ -5,10 +5,6 @@
 </template>
 
 <style lang="scss">
-  body {
-    font-size: 16px;
-  }
-
   #app {
     height: 100vh;
   }
