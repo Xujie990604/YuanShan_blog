@@ -1,35 +1,21 @@
 <template>
-  <div class="vue-test">
-    <span
-      v-if="isShow"
-      @click="handleClickName">
-      {{ name + ' org' }}
-    </span>
-    <ul>
-      <li
-        v-for="item in userList"
-        :key="item">
-        {{ item }}
-      </li>
-    </ul>
-  </div>
+  <div>{{ state.foo }}</div>
+  <div>{{ state.bar }}</div>
+  <div>{{ state.baz }}</div>
 </template>
 
 <script lang="ts" setup>
-  import { reactive } from 'vue'
-  import { ref, getCurrentInstance, onMounted } from 'vue'
-  const instance = getCurrentInstance()
-  onMounted(() => {
-    console.log('当前组件实例', instance.ctx)
+  import { reactive, ref, toRefs } from 'vue'
+
+  const state = reactive({
+    foo: ref(0),
+    bar: ref([1, 2, 3]),
   })
 
-  const isShow = ref(true)
-  const name = ref('no One')
-  const userList = reactive(['foo', 'bar', 'baz'])
+  let { foo, bar } = toRefs(state)
 
-  function handleClickName() {
-    alert('click name')
-  }
+  setTimeout(() => {
+    foo.value++
+    bar.value.push(4)
+  }, 2000)
 </script>
-
-<style scoped lang="scss"></style>
