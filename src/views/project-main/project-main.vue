@@ -58,6 +58,10 @@
           itemName: 'Tailwindcss',
           itemRouter: 'tailwindcss-test',
         },
+        {
+          itemName: 'Vue-use-test',
+          itemRouter: 'vue-use-test',
+        },
       ],
     },
     {

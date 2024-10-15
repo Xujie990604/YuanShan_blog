@@ -45,6 +45,11 @@ const router = createRouter({
           name: 'Tailwindcss-test',
           component: () => import('../views/tailwindcss-test/tailwindcss-test.vue'),
         },
+        {
+          path: 'vue-use-test',
+          name: 'Vue-use-test',
+          component: () => import('../views/vueuse-test/vue-use-test.vue'),
+        },
       ],
     },
     {
