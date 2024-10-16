@@ -1,7 +1,6 @@
 <template>
   <div class="project-main">
     <el-container style="height: 100%">
-      <el-header>项目标题</el-header>
       <el-container>
         <el-aside width="200px">
           <!-- 菜单 -->
@@ -23,7 +22,6 @@
         </el-aside>
         <el-main> <RouterView></RouterView> </el-main>
       </el-container>
-      <el-footer>页面底部</el-footer>
     </el-container>
   </div>
 </template>
