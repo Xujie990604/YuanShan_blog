@@ -12,4 +12,5 @@ interface ImportMeta {
 
 interface Window {
   info1: string
+  zhuge: any // TODO: 使用 TS 完善 诸葛 IO
 }
