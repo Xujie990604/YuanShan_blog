@@ -28,7 +28,7 @@
 
 <style scoped lang="scss">
   .i18n-demo {
-    height: calc(100% - var(--statusBarHeight));
+    height: calc(100% - var(--status-bar-height));
     overflow: scroll;
   }
 </style>

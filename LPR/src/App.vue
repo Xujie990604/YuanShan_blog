@@ -41,9 +41,9 @@
       homeIndicatorHeight = '21'
     }
 
-    document.body.style.setProperty('--statusBarHeight', statusBarHeight + 'px')
-    document.body.style.setProperty('--pageTitleHeight', 44 + 'px')
-    document.body.style.setProperty('--homeIndicatorHeight', homeIndicatorHeight + 'px')
+    document.body.style.setProperty('--status-bar-height', statusBarHeight + 'px')
+    document.body.style.setProperty('--page-title-height', 44 + 'px')
+    document.body.style.setProperty('--home-indicator-height', homeIndicatorHeight + 'px')
 
     // NOTE: 设置语言
     locale.value = langTypeEnum[APPInfo.curLan]
@@ -80,13 +80,13 @@
   body {
     background-color: #f3f4f7;
     margin: {
-      top: var(--statusBarHeight) !important;
-      bottom: var(--homeIndicatorHeight) !important;
+      top: var(--status-bar-height) !important;
+      bottom: var(--home-indicator-height) !important;
     }
   }
 
   .page {
-    height: calc(100vh - var(--statusBarHeight) - var(--homeIndicatorHeight));
+    height: calc(100vh - var(--status-bar-height) - var(--home-indicator-height));
     overflow: hidden; // NOTE: 解决 margin 塌陷问题
   }
 </style>

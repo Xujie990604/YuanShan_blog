@@ -29,16 +29,17 @@
 <style scoped lang="scss">
   .base-page-title {
     display: flex;
-    align-items: center;
     height: 44px;
     background-color: #fff;
+    align-items: center;
   }
 
   .page-title-text {
-    flex: 1;
     font-size: 17px;
     color: #111f2c;
     text-align: center;
+    flex: 1;
+
   }
 
   .return-arrow {
@@ -48,11 +49,11 @@
   }
 
   .right-icon {
-    width: 24px;
-    height: 24px;
-    margin: 0 16px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 24px;
+    height: 24px;
+    margin: 0 16px;
   }
 </style>

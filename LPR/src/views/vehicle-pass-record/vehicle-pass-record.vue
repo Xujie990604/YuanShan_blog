@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-  wx.t()
 </script>
 
 <style scoped lang="scss"></style>
