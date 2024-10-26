@@ -1,12 +1,11 @@
-import {createI18n} from 'vue-i18n';
-import zh from './lang/zh';
-import en from './lang/en';
-
+import { createI18n } from 'vue-i18n'
+import zh from './lang/zh'
+import en from './lang/en'
 
 // TODO：文件的引入需要改成懒加载
 const messages = {
   zh,
-  en
+  en,
 }
 
 export default createI18n({

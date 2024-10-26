@@ -1,9 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { IAPPInfoStore, ISetAPPInfoStore } from './types';
-import { serverAddressEnum, lanEnum, AppTypeEnum, hasHomeIndicatorEnum,langTypeEnum } from '../../dsbridge/types'
-
-
+import type { IAPPInfoStore, ISetAPPInfoStore } from './types'
+import { serverAddressEnum, lanEnum, AppTypeEnum, hasHomeIndicatorEnum, langTypeEnum } from '../../dsbridge/types'
 
 /**
  * 管理APP信息
@@ -17,7 +15,7 @@ export const useAppInfoStore = defineStore('appInfo', () => {
     curLanType: langTypeEnum[lanEnum.ZH],
     statusBarHeight: 36,
     hasHomeIndicator: hasHomeIndicatorEnum.NO,
-    AppType: AppTypeEnum.EZLIVE_PRO
+    AppType: AppTypeEnum.EZLIVE_PRO,
   })
 
   function setAppInfo(payload: ISetAPPInfoStore) {

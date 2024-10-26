@@ -1,7 +1,6 @@
-
-import type { IResponseType, IUserLoginRequestData, IUserLoginResponseData } from './type';
-import { normalNetwork } from '../service';
-import api from '../../constant/api';
+import type { IResponseType, IUserLoginRequestData, IUserLoginResponseData } from './type'
+import { normalNetwork } from '../service'
+import api from '../../constant/api'
 
 /**
  * 用户登录接口
@@ -9,14 +8,16 @@ import api from '../../constant/api';
  */
 export function userLoginRequest(data: IUserLoginRequestData) {
   return new Promise<IResponseType<IUserLoginResponseData>>((resolve, reject) => {
-    normalNetwork.post({
-      url: api.login,
-      data,
-    })
-      .then((result) => {
+    normalNetwork
+      .post({
+        url: api.login,
+        data,
+      })
+      .then(result => {
         resolve(result as IResponseType<IUserLoginResponseData>)
-      }).catch((err) => {
-        reject(err);
-      });
+      })
+      .catch(err => {
+        reject(err)
+      })
   })
 }

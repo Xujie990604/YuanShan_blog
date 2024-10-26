@@ -1,9 +1,9 @@
-module.exports = {
+export default  {
   $schema: 'https://json.schemastore.org/prettierrc',
   semi: false, // 句末使用分号
-  tabWidth: "2", // 缩进长度
+  tabWidth: 2, // 缩进长度
   singleQuote: true, // 使用单引号
-  printWidth: 100, // 单行长度
+  printWidth: 150, // 单行长度
   trailingComma: 'es5', // 多行时在 ES5 中有效的尾随逗号（对象、数组等）。TypeScript 的类型参数中没有尾随逗号
   endOfLine: 'lf', // 结束行形式 <lf|crlf|cr|auto>
   useTabs: false, // 使用空格代替tab缩进

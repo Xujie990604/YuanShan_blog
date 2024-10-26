@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+  wx.t()
 </script>
 
 <style scoped lang="scss"></style>

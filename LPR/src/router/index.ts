@@ -6,24 +6,24 @@ const router = createRouter({
     {
       path: '/',
       name: 'vehiclePassRecord',
-      component: () => import('../views/vehicle-pass-record/vehicle-pass-record.vue')
+      component: () => import('../views/vehicle-pass-record/vehicle-pass-record.vue'),
     },
     {
       path: '/i18n-demo',
       name: 'i18nDemo',
-      component: () => import('../views/project-demo/i18n-demo/i18n-demo.vue')
+      component: () => import('../views/project-demo/i18n-demo/i18n-demo.vue'),
     },
     {
-      path:'/vant-demo',
+      path: '/vant-demo',
       name: 'vantDemo',
-      component: () => import('../views/project-demo/vant-demo/vant-demo.vue')
+      component: () => import('../views/project-demo/vant-demo/vant-demo.vue'),
     },
     {
-      path:'/global-data-demo',
+      path: '/global-data-demo',
       name: 'globalDataDemo',
-      component: () => import('../views/project-demo/global-data-demo/global-data-demo.vue')
-    }
-  ]
+      component: () => import('../views/project-demo/global-data-demo/global-data-demo.vue'),
+    },
+  ],
 })
 
 export default router

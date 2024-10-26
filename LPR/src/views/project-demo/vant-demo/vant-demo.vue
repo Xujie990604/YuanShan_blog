@@ -9,14 +9,14 @@
 </template>
 
 <script lang="ts" setup>
-import { showLoadingToast } from 'vant'
+  import { showLoadingToast } from 'vant'
 
-setTimeout(() => {
-  showLoadingToast({
-    message: '加载中...',
-    forbidClick: true,
-  })
-}, 3000)
+  setTimeout(() => {
+    showLoadingToast({
+      message: '加载中...',
+      forbidClick: true,
+    })
+  }, 3000)
 </script>
 
 <style scoped lang="scss"></style>

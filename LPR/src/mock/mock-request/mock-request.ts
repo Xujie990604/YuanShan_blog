@@ -1,7 +1,5 @@
-import { CloudMockInstance } from '../mock-service/mokc-service-instance';
-import api from '../../constant/api';
-
-
+import { CloudMockInstance } from '../mock-service/mokc-service-instance'
+import api from '../../constant/api'
 
 // mock 登录接口
 CloudMockInstance.mock(api.login, () => {

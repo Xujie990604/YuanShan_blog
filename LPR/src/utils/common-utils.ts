@@ -8,18 +8,18 @@
  * @param variable 需要获取的变量名称
  */
 export function getQueryVariable(url: string, variable: string) {
-  const query = url.split("?")[1];
+  const query = url.split('?')[1]
 
-  if (typeof query !== "undefined") {
-    const vars = query.split("&");
+  if (typeof query !== 'undefined') {
+    const vars = query.split('&')
 
     for (let i = 0; i < vars.length; i++) {
-      const pair = vars[i].split("=");
+      const pair = vars[i].split('=')
 
-      if (pair[0] === variable) return pair[1];
+      if (pair[0] === variable) return pair[1]
     }
   }
-  return undefined;
+  return undefined
 }
 
 /**
@@ -28,11 +28,11 @@ export function getQueryVariable(url: string, variable: string) {
  * @returns string | undefined
  */
 export function getDomainFromUrl(url) {
-  const result = url.match(/^(https?:\/\/[^/]+)/i);
+  const result = url.match(/^(https?:\/\/[^/]+)/i)
   if (result) {
-    return result[1];
+    return result[1]
   } else {
-    return undefined;
+    return undefined
   }
 }
 
@@ -42,10 +42,10 @@ export function getDomainFromUrl(url) {
  */
 export function ensureHttpsPrefix(serverAddress) {
   // 检查字符串是否以 'https://' 开头
-  if (serverAddress.startsWith("https://")) {
-    return serverAddress;
+  if (serverAddress.startsWith('https://')) {
+    return serverAddress
   } else {
-    return "https://" + serverAddress;
+    return 'https://' + serverAddress
   }
 }
 
@@ -56,16 +56,16 @@ export function ensureHttpsPrefix(serverAddress) {
  * @returns
  */
 export function throttle(fn, delay = 200) {
-  let timer = null;
+  let timer = null
   return function () {
-    const args = arguments;
+    const args = arguments
     if (!timer) {
       timer = setTimeout(() => {
-        timer = null;
-        fn.apply(this, args);
-      }, delay);
+        timer = null
+        fn.apply(this, args)
+      }, delay)
     }
-  };
+  }
 }
 
 /**
@@ -75,15 +75,15 @@ export function throttle(fn, delay = 200) {
  * @returns
  */
 export function debounce(fn, delay = 200) {
-  let timer = null;
+  let timer = null
   return function () {
-    const self = this;
-    const args = arguments;
+    const self = this
+    const args = arguments
     if (timer) {
-      clearTimeout(timer);
+      clearTimeout(timer)
     }
     timer = setTimeout(function () {
-      fn.apply(self, args);
-    }, delay);
-  };
+      fn.apply(self, args)
+    }, delay)
+  }
 }

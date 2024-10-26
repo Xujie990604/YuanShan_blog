@@ -1,8 +1,6 @@
 <template>
   <basePageTitle title="多语言">
-    <template #rightIcon>
-      右
-    </template>
+    <template #rightIcon> 右 </template>
   </basePageTitle>
   <div class="i18n-demo">
     <h2>在 template 中使用多语言</h2>
@@ -17,20 +15,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+  import { ref } from 'vue'
 
-// 在 script 中使用多语言
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
-const helloText = ref(t('hello'))
+  // 在 script 中使用多语言
+  import { useI18n } from 'vue-i18n'
+  const { t } = useI18n()
+  const helloText = ref(t('hello'))
 
-// 在 ts 中使用 多语言
-import impText from './i18n'
+  // 在 ts 中使用 多语言
+  import impText from './i18n'
 </script>
 
 <style scoped lang="scss">
-.i18n-demo {
-  height: calc(100% - var(--statusBarHeight));
-  overflow: scroll;
-}
+  .i18n-demo {
+    height: calc(100% - var(--statusBarHeight));
+    overflow: scroll;
+  }
 </style>
