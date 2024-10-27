@@ -5,6 +5,15 @@
 </template>
 
 <script lang="ts" setup>
+  import { userLoginRequest } from '../../service/request/request'
+
+  userLoginRequest({ name: 'admin', password: 'admin' }, { loading: false, toast: false })
+    .then(result => {
+      console.log(result)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 </script>
 
 <style scoped lang="scss"></style>

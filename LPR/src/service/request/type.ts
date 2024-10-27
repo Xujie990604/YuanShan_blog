@@ -1,7 +1,11 @@
-export interface IResponseType<T = any> {
-  data: T
-  code: number
-  message: string
+/**
+ * 接口请求通用参数
+ * @interface loading 是否开启 loading
+ * @interface toast 是否错误码提示
+ */
+export interface IRequestConfig {
+  loading?: boolean
+  toast?: boolean
 }
 
 /**

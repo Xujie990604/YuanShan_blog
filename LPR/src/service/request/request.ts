@@ -1,4 +1,4 @@
-import type { IResponseType, IUserLoginRequestData, IUserLoginResponseData } from './type'
+import type { IRequestConfig, IUserLoginRequestData, IUserLoginResponseData } from './type'
 import { normalNetwork } from '../service'
 import api from '../../constant/api'
 
@@ -6,15 +6,19 @@ import api from '../../constant/api'
  * 用户登录接口
  * @param data
  */
-export function userLoginRequest(data: IUserLoginRequestData) {
-  return new Promise<IResponseType<IUserLoginResponseData>>((resolve, reject) => {
+export function userLoginRequest(data: IUserLoginRequestData, requestConfig?: IRequestConfig) {
+  return new Promise<IUserLoginResponseData>((resolve, reject) => {
     normalNetwork
-      .post({
-        url: api.login,
-        data,
-      })
+      .post<IUserLoginResponseData>(
+        {
+          url: api.login,
+          data,
+        },
+        requestConfig
+      )
       .then(result => {
-        resolve(result as IResponseType<IUserLoginResponseData>)
+        console.log(result)
+        resolve(result)
       })
       .catch(err => {
         reject(err)

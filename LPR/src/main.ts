@@ -3,8 +3,10 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import registerApp from './global/global'
-// TODO：使用环境变量来控制
-import './mock/mock-request/mock-request'
+
+if (import.meta.env.VITE_APP_ISMOCK_API === '1') {
+  import('./mock/mock-request/mock-request')
+}
 
 const app = createApp(App)
 

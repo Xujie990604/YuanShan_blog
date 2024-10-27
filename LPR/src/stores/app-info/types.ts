@@ -1,4 +1,9 @@
-import { serverAddressEnum, lanEnum, AppTypeEnum, hasHomeIndicatorEnum } from '../../dsbridge//types'
+import {
+  serverAddressEnum,
+  lanEnum,
+  AppTypeEnum,
+  hasHomeIndicatorEnum,
+} from '../../dsbridge//types'
 
 export interface IAPPInfoStore {
   ucsToken: string

@@ -1,7 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { IAPPInfoStore, ISetAPPInfoStore } from './types'
-import { serverAddressEnum, lanEnum, AppTypeEnum, hasHomeIndicatorEnum, langTypeEnum } from '../../dsbridge/types'
+import {
+  serverAddressEnum,
+  lanEnum,
+  AppTypeEnum,
+  hasHomeIndicatorEnum,
+  langTypeEnum,
+} from '../../dsbridge/types'
 
 /**
  * 管理APP信息

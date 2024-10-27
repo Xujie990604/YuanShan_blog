@@ -39,7 +39,6 @@
     color: #111f2c;
     text-align: center;
     flex: 1;
-
   }
 
   .return-arrow {

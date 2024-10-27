@@ -1,6 +1,13 @@
 <script setup lang="ts">
   import { RouterView } from 'vue-router'
-  import { type IGetAllInfoResult, serverAddressEnum, lanEnum, hasHomeIndicatorEnum, AppTypeEnum, langTypeEnum } from './dsbridge/types'
+  import {
+    type IGetAllInfoResult,
+    serverAddressEnum,
+    lanEnum,
+    hasHomeIndicatorEnum,
+    AppTypeEnum,
+    langTypeEnum,
+  } from './dsbridge/types'
   import { dsbridgeFuncSync } from './dsbridge/dsbridge'
   import { useAppInfoStore } from '@/stores/app-info/app-info'
   // TODO: 怎么解构使用且不丢失响应式
@@ -8,8 +15,8 @@
   import { useI18n } from 'vue-i18n'
   const { locale } = useI18n()
 
-  // TODO: 写进环境变量文件里, 并且有三个状态：全mock, 仅mock接口, 全不MOCK
-  const APPInfo = getAllInfo(true)
+  // NOTE：Dsbridge Mock
+  const APPInfo = getAllInfo(import.meta.env.VITE_APP_ISMOCK_DSBRIDGE === '1')
   setAPPInfo(APPInfo)
 
   function getAllInfo(isMock: boolean) {
@@ -58,16 +65,6 @@
       AppType: APPInfo.AppType,
     })
   }
-
-  import { userLoginRequest } from './service/request/request'
-
-  userLoginRequest({ name: 'admin', password: 'admin' })
-    .then(result => {
-      console.log(result)
-    })
-    .catch(err => {
-      console.log(err)
-    })
 </script>
 
 <template>

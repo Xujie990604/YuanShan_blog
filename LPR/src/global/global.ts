@@ -10,22 +10,29 @@ import globalComponent from './register-global-component'
 import globalData from './register-global-data'
 
 export default function (app: App) {
-  app.use(i18n) // 注册 i18n 实例
+  return new Promise(resolve => {
+    app.use(i18n) // 注册 i18n 实例
 
-  routerErrorHandler(app) // 注册全局错误处理器
+    routerErrorHandler(app) // 注册全局错误处理器
 
-  // 全局注册基本组件
-  globalComponent.forEach(cpt => {
-    app.component(cpt.componentName, cpt.component)
-  })
+    // 全局注册基本组件
+    globalComponent.forEach(cpt => {
+      app.component(cpt.componentName, cpt.component)
+    })
 
-  // 全局注册变量
-  globalData.forEach(data => {
-    app.provide(data.key, data.value)
-  })
+    // 全局注册变量
+    globalData.forEach(data => {
+      app.provide(data.key, data.value)
+    })
 
-  // 全局注册 Vant
-  vantComponentList.forEach(vantComponent => {
-    app.use(vantComponent)
+    // 全局注册 Vant
+    vantComponentList.forEach(vantComponent => {
+      app.use(vantComponent)
+    })
+
+    // NOTE：接口 MOCK
+    // if (import.meta.env.VITE_APP_ISMOCK_API === '1') {
+    //   import('../mock/mock-request/mock-request')
+    // }
   })
 }
