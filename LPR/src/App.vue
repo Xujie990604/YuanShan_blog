@@ -23,7 +23,7 @@
     const mockData: IGetAllInfoResult = {
       ucsToken: '',
       serverAddress: serverAddressEnum.DOMESTIC_UCS,
-      curLan: lanEnum.JAP,
+      curLan: lanEnum.ZH,
       defaultLan: lanEnum.EN,
       statusBarHeight: 36,
       hasHomeIndicator: hasHomeIndicatorEnum.NO,

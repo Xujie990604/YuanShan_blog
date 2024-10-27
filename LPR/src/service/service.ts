@@ -6,19 +6,16 @@ import { handleHTTPCode, handleBusinessCode } from './network/httpResponse'
 export const normalNetwork = new network({
   timeout: TIME_OUT,
   baseURL: 'https://ezcloud.uniview.com',
-  requestInterceptor: config => {
+  requestInterceptor(config) {
     return config
   },
-  requestInterceptorCatch: err => {
-    return err
+  requestInterceptorCatch(err) {
+    return Promise.reject(err)
   },
-  responseInterceptor: res => {
-    console.log(res)
-    handleBusinessCode(res.data.code)
+  responseInterceptor(res) {
     return res.data
   },
-  responseInterceptorCatch: err => {
-    handleHTTPCode(err)
-    return err
+  responseInterceptorCatch(err) {
+    return Promise.reject(err)
   },
 })

@@ -17,7 +17,6 @@ export function userLoginRequest(data: IUserLoginRequestData, requestConfig?: IR
         requestConfig
       )
       .then(result => {
-        console.log(result)
         resolve(result)
       })
       .catch(err => {

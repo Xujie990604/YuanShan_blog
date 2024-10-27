@@ -7,12 +7,12 @@
 <script lang="ts" setup>
   import { userLoginRequest } from '../../service/request/request'
 
-  userLoginRequest({ name: 'admin', password: 'admin' }, { loading: false, toast: false })
+  userLoginRequest({ name: 'admin', password: 'admin' })
     .then(result => {
-      console.log(result)
+      console.log('接口请求成功', result)
     })
     .catch(err => {
-      console.log(err)
+      console.log('接口请求失败', err)
     })
 </script>
 

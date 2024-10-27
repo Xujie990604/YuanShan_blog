@@ -11,7 +11,7 @@ import { APItypeEnum } from '../../constant/globalEnum'
  * 对 CLOUD  接口的拦截
  */
 export const CloudMockInstance = new mockJS(
-  '20-200',
+  '2000',
   'https://ezcloud.uniview.com',
   APItypeEnum.CLOUD
 )

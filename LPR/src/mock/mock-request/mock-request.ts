@@ -4,7 +4,7 @@ import api from '../../constant/api'
 // mock 登录接口
 CloudMockInstance.mock(api.login, () => {
   return {
-    code: 200,
+    code: 1001,
     data: {
       id: 1,
       name: 'xujie',
