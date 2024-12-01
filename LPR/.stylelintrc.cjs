@@ -1,11 +1,10 @@
+
 module.exports = {
   root: true,
   plugins: ['stylelint-order', 'stylelint-scss'],
   customSyntax: 'postcss-html',
   extends: ['stylelint-config-standard', 'stylelint-config-prettier', 'stylelint-config-html'],
   rules: {
-    'unit-no-unknown': true,
-    'color-hex-case': 'lower',
     'selector-class-pattern': null,
     'selector-pseudo-class-no-unknown': [
       true,
@@ -40,12 +39,8 @@ module.exports = {
     ],
     'no-empty-source': null,
     'named-grid-areas-no-invalid': null,
-    'unicode-bom': 'never',
     'no-descending-specificity': null,
     'font-family-no-missing-generic-family-keyword': null,
-    'declaration-colon-space-after': 'always-single-line',
-    'declaration-colon-space-before': 'never',
-    // 'declaration-block-trailing-semicolon': 'always',
     'rule-empty-line-before': [
       'always',
       {
@@ -221,6 +216,6 @@ module.exports = {
       'speak',
     ],
   },
-  ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
+  ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts', 'stats.html'],
 }
 

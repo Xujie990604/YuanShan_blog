@@ -7,36 +7,19 @@ export enum callNativeTypeEnum {
 }
 
 /**
- * 从 APP 获取的启动参数
- */
-export interface IGetAllInfoResult {
-  ucsToken: string
-  serverAddress: serverAddressEnum
-  curLan: lanEnum
-  defaultLan: lanEnum
-  statusBarHeight: number
-  hasHomeIndicator: hasHomeIndicatorEnum
-  AppType: AppTypeEnum
-}
-
-/**
  * 服务器地址
  */
 export enum serverAddressEnum {
   DOMESTIC_UCS = 'https://ezcloud.uniview.com', // 国内UCS服务器地址
   OVERSEAS_UCS = 'https://ap.ezcloud.uniview.com', // 海外UCS服务器地址
-  DOMESTIC_IOT = 'https://eziot.uniview.com', // 国内IOT服务器地址
-  OVERSEAS_IOT = 'https://ap-eziot.uniview.com', // 海外IOT服务器地址
 }
 
 /**
  * 系统语言
  */
-//  NOTE: 当前项目支持的所有语言类型
 export enum lanEnum {
   ZH = '1', // 中文
   EN = '2', // 英文
-  JAP = '3', // 英文
 }
 
 /**
@@ -46,7 +29,6 @@ export enum lanEnum {
 export const langTypeEnum = {
   [lanEnum.ZH]: 'zh',
   [lanEnum.EN]: 'en',
-  [lanEnum.JAP]: 'jap',
 }
 
 /**
@@ -58,6 +40,7 @@ export enum AppTypeEnum {
   UNIARCH = '2', // uniarch 和 uniwiz
   NONEBRANCH = '3', // 宇视云白牌(国内及海外)
   EZLIVE_PRO = '6', // 宇视云Pro(国内及海外)
+  EZLIVE_PRO_NONEBRANCH = '7', // 宇视云Pro白牌(国内及海外)
 }
 
 /**
@@ -66,4 +49,36 @@ export enum AppTypeEnum {
 export enum hasHomeIndicatorEnum {
   NO = '0',
   YES = '1',
+}
+
+/**
+ * 从 APP 获取的启动参数
+ */
+export interface IGetAllInfo {
+  ucsToken: string
+  serverAddress: serverAddressEnum
+  curLan: lanEnum
+  defaultLan: lanEnum
+  statusBarHeight: number
+  hasHomeIndicator: hasHomeIndicatorEnum
+  AppType: AppTypeEnum
+}
+
+export interface IGetDeviceP2PInfo {
+  username: string
+  deviceStatus: '0' | '1'
+  ip: string
+  port: string
+}
+
+export interface IVehicleRecordChannel {
+  channelName: string
+  channelId: string
+}
+
+export interface IGetVehicleRecordDevice {
+  deviceName: string
+  deviceSerial: string
+  devID: string
+  channelList: IVehicleRecordChannel[]
 }

@@ -1,3 +1,5 @@
 export interface IProps {
-  title: string
+  title?: string
+  bgColor?: string
+  isShowRight?: boolean
 }

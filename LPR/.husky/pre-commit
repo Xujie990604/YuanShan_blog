@@ -1,0 +1,5 @@
+cd LPR
+
+pnpm run lint
+pnpm run format
+pnpm run stylelint

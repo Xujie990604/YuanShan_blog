@@ -10,7 +10,8 @@ const messages = {
 
 export default createI18n({
   locale: '',
-  fallbackLocale: 'en',
+  fallbackLocale: 'en', // NOTE: 翻译缺失时的回退语言环境
+  missing: () => '', // NOTE: 自定义不存在的字段返回值
   legacy: false, // you must set `false`, to use Composition API
   globalInjection: true, // 全局注册 $t 方法
   messages,

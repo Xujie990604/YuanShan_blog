@@ -1,6 +1,6 @@
 export default [
   {
     key: 'globalUser',
-    value: 'Admin123.',
+    value: '全局变量示例',
   },
 ]

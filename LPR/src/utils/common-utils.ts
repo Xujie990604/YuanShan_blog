@@ -23,11 +23,10 @@ export function getQueryVariable(url: string, variable: string) {
 }
 
 /**
- * @description: 获取 URL 中的域名
- * @param {String} url 完整的 URL 字符串
- * @returns string | undefined
+ * 获取 URL 中的域名
+ * @param url 完整的 URL 字符串
  */
-export function getDomainFromUrl(url) {
+export function getDomainFromUrl(url: string) {
   const result = url.match(/^(https?:\/\/[^/]+)/i)
   if (result) {
     return result[1]
@@ -37,10 +36,9 @@ export function getDomainFromUrl(url) {
 }
 
 /**
- * @description: 在域名前拼接 https://
- * @param {String} serverAddress
+ * 在域名前拼接 https://
  */
-export function ensureHttpsPrefix(serverAddress) {
+export function ensureHttpsPrefix(serverAddress: string) {
   // 检查字符串是否以 'https://' 开头
   if (serverAddress.startsWith('https://')) {
     return serverAddress
@@ -51,18 +49,18 @@ export function ensureHttpsPrefix(serverAddress) {
 
 /**
  * 节流包装函数
- * @param {function} fn 被包装的函数
- * @param {number} [delay] 定时器延时时间
- * @returns
+ * @param fn 被包装的函数
+ * @param delay 定时器延时时间
  */
-export function throttle(fn, delay = 200) {
-  let timer = null
+export function throttle(fn: any, delay = 200) {
+  let timer: number | null = null
   return function () {
+    // eslint-disable-next-line prefer-rest-params
     const args = arguments
     if (!timer) {
       timer = setTimeout(() => {
         timer = null
-        fn.apply(this, args)
+        fn(...args)
       }, delay)
     }
   }
@@ -70,20 +68,19 @@ export function throttle(fn, delay = 200) {
 
 /**
  * 防抖包装函数
- * @param {function} fn 被包装的函数
- * @param {number} [delay] 定时器延时时间
- * @returns
+ * @param fn 被包装的函数
+ * @param  delay 定时器延时时间
  */
-export function debounce(fn, delay = 200) {
-  let timer = null
+export function debounce(fn: any, delay = 200) {
+  let timer: number | null = null
   return function () {
-    const self = this
+    // eslint-disable-next-line prefer-rest-params
     const args = arguments
     if (timer) {
       clearTimeout(timer)
     }
     timer = setTimeout(function () {
-      fn.apply(self, args)
+      fn(...args)
     }, delay)
   }
 }

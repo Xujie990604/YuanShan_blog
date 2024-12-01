@@ -4,6 +4,7 @@ import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 import globals from 'globals';
 import tsEslint from 'typescript-eslint'
 import eslintJS from '@eslint/js'
+import vueParser from 'vue-eslint-parser';
 
 export default [
   {
@@ -19,7 +20,7 @@ export default [
   /** JS 推荐配置 */
   eslintJS.configs.recommended,
   /** Vue 推荐配置 */
-  ...eslintPluginVue.configs['flat/essential'],
+  ...eslintPluginVue.configs['flat/recommended'],
   /** TS 推荐配置 */
   ...vueTsEslintConfig(),
   ...tsEslint.configs.recommended,
@@ -29,7 +30,7 @@ export default [
    */
   {
     rules: {
-      'no-console': 'warn',
+      'no-console': 0,
     }
   },
 
@@ -66,6 +67,7 @@ export default [
   {
     files: ['**/*.{ts,tsx,vue}'],
     rules: {
+      "@typescript-eslint/no-explicit-any": "off"
     },
   },
 
@@ -75,12 +77,19 @@ export default [
   {
     languageOptions: {
       globals: {
-        ...globals.browser
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2020
         // 可以追加自定义全局变量
+      },
+      parser: vueParser,
+      parserOptions: {
+        parser: tsEslint.parser,
+        sourceType: 'module'
       }
     }
   },
 
-  // NOTE: 只使用 Eslint 最代码质量的检查，代码风格相关内容交给 Prettier 去做
+  // NOTE: 只使用 Eslint 对代码质量的检查，代码风格相关内容交给 Prettier 去做
   skipFormatting, // 确保在 ESLint 检查时跳过那些与代码格式化相关的规则
 ]

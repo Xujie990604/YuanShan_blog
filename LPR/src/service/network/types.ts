@@ -1,10 +1,7 @@
-/**
- * 通用接口返回格式
- */
-export interface IResponseType<T = any> {
-  data: T
-  code: number
-  message: string
+export enum UNVRequestTypeEnum {
+  CLOUD = 'cloud',
+  LAPI = 'lapi',
+  P2P = 'p2p',
 }
 
 import type { CreateAxiosDefaults, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
@@ -17,4 +14,21 @@ export interface UNVRequestInterceptors extends CreateAxiosDefaults {
   requestInterceptorCatch?: (error: any) => any
   responseInterceptor?: (res: AxiosResponse) => AxiosResponse
   responseInterceptorCatch?: (error: any) => any
+  UNVRequestType: UNVRequestTypeEnum
+}
+
+import type { IResponseType, IP2PResponseType } from '../request/type'
+
+/**
+ * 类型谓词函数，用于确定返回值是 IResponseType 类型
+ */
+export function isCloudRequest(arg: any, type: UNVRequestTypeEnum): arg is IResponseType {
+  return arg && type === UNVRequestTypeEnum.CLOUD
+}
+
+/**
+ * 类型谓词函数，用于确定返回值是 IP2PResponseType 类型
+ */
+export function isP2PRequest(arg: any, type: UNVRequestTypeEnum): arg is IP2PResponseType {
+  return arg && type === UNVRequestTypeEnum.P2P
 }

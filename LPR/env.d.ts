@@ -10,7 +10,6 @@ interface ImportMeta {
   readonly env: ImportMetaEnv
 }
 
-// NOTE:给 window 上添加变量类型声明
-interface Window {
-
-}
+// NOTE: 给 window 上添加变量类型声明
+// interface Window {
+// }

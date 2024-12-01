@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(), // TODO: 修改成 hash
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
@@ -9,19 +9,29 @@ const router = createRouter({
       component: () => import('../views/vehicle-pass-record/vehicle-pass-record.vue'),
     },
     {
-      path: '/i18n-demo',
-      name: 'i18nDemo',
-      component: () => import('../views/project-demo/i18n-demo/i18n-demo.vue'),
+      path: '/choose-page',
+      name: 'choosePage',
+      component: () => import('../views/choose-page/choose-page.vue'),
     },
     {
-      path: '/vant-demo',
-      name: 'vantDemo',
-      component: () => import('../views/project-demo/vant-demo/vant-demo.vue'),
+      path: '/message-list',
+      name: 'messageList',
+      component: () => import('../views/message-list/message-list.vue'),
     },
     {
-      path: '/global-data-demo',
-      name: 'globalDataDemo',
-      component: () => import('../views/project-demo/global-data-demo/global-data-demo.vue'),
+      path: '/select-device',
+      name: 'selectDevice',
+      component: () => import('../views/select-device/select-device.vue'),
+    },
+    {
+      path: '/car-type-choose',
+      name: 'carTypeChoose',
+      component: () => import('../views/car-type-choose/car-type-choose.vue'),
+    },
+    {
+      path: '/hook',
+      name: 'Hook',
+      component: () => import('../views/hook-test/hook.vue'),
     },
   ],
 })
